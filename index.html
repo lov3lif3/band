@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta property="og:title" content="WOBU | STHLM/SEOUL">
-<meta property="og:description" content="Listen to Amplifier Vol. 1 by WOBU.">
-<meta property="og:image" content="https://wobu.world/amplifier.jpg">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://wobu.world">
-
-<meta name="description" content="STHLM / SEOUL">
-
-<style>
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  min-height: 100vh;
+  min-height: 100dvh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 
   padding:
@@ -39,7 +25,6 @@ body {
   animation: zoom 25s infinite alternate ease-in-out;
 }
 
-/* DARK CYBER OVERLAY */
 body::before {
   content: "";
   position: absolute;
@@ -54,7 +39,7 @@ body::before {
   z-index: 0;
 }
 
-/* CONTENT ABOVE OVERLAY */
+
 h1,
 p,
 .player,
@@ -64,20 +49,7 @@ p,
   z-index: 1;
 }
 
-/* BAND NAME */
-h1 {
-  font-size: 48px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
 
-  text-shadow:
-    0 0 10px rgba(0,255,255,0.5),
-    0 0 20px rgba(255,0,255,0.3);
-
-  margin-bottom: 10px;
-}
-
-/* TAGLINE BASE */
 .tagline {
   color: rgba(255,255,255,0.75);
   max-width: 500px;
@@ -89,14 +61,12 @@ h1 {
   display: inline-block;
 }
 
-/* GLITCH EFFECT */
 .glitch {
   position: relative;
   display: inline-block;
   animation: flicker 3s infinite;
 }
 
-/* ghost layers */
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -104,53 +74,21 @@ h1 {
   left: 0;
   top: 0;
   width: 100%;
-  overflow: hidden;
   opacity: 0.6;
 }
 
-/* cyan layer */
 .glitch::before {
   color: rgba(0,255,255,0.7);
   transform: translateX(-1px);
   animation: glitch1 2.5s infinite;
 }
 
-/* magenta layer */
 .glitch::after {
   color: rgba(255,0,255,0.7);
   transform: translateX(1px);
   animation: glitch2 2.5s infinite;
 }
 
-/* flicker */
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  92% { opacity: 1; }
-  93% { opacity: 0.4; }
-  94% { opacity: 1; }
-  97% { opacity: 0.7; }
-}
-
-/* glitch movement */
-@keyframes glitch1 {
-  0%   { transform: translate(0,0); }
-  20%  { transform: translate(-2px,1px); }
-  40%  { transform: translate(-1px,-1px); }
-  60%  { transform: translate(-3px,0px); }
-  80%  { transform: translate(-1px,1px); }
-  100% { transform: translate(0,0); }
-}
-
-@keyframes glitch2 {
-  0%   { transform: translate(0,0); }
-  20%  { transform: translate(2px,-1px); }
-  40%  { transform: translate(1px,1px); }
-  60%  { transform: translate(3px,0px); }
-  80%  { transform: translate(1px,-1px); }
-  100% { transform: translate(0,0); }
-}
-
-/* PLAYER */
 .player {
   width: 100%;
   max-width: 420px;
@@ -161,17 +99,12 @@ h1 {
     0 0 35px rgba(255,0,255,0.10);
 
   border-radius: 12px;
+
+  position: relative;
+  z-index: 2;
 }
 
-/* CTA CONTAINER */
-.cta-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 420px;
-}
 
-/* PRIMARY BUTTON */
 .btn {
   display: inline-block;
 
@@ -186,79 +119,18 @@ h1 {
 
   box-shadow: 0 0 20px rgba(0,255,200,0.3);
   transition: 0.2s ease;
+
+  position: relative;
+  overflow: hidden;
 }
 
+/* hover glitch stays */
 .btn:hover {
   transform: scale(1.03);
   box-shadow: 0 0 30px rgba(0,255,200,0.5);
 }
 
-  .glitch-btn {
-  position: relative;
-  overflow: hidden;
-}
 
-/* ghost layers */
-.glitch-btn::before,
-.glitch-btn::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* hover glitch activation */
-.glitch-btn:hover {
-  animation: btnFlicker 0.4s infinite;
-  transform: scale(1.03);
-}
-
-/* cyan + magenta “signal split” */
-.glitch-btn:hover::before {
-  content: "▶ Listen Now";
-  position: absolute;
-  left: 2px;
-  top: 0;
-  color: rgba(0,255,255,0.8);
-  opacity: 1;
-  animation: glitchShift1 0.3s infinite;
-}
-
-.glitch-btn:hover::after {
-  content: "▶ Listen Now";
-  position: absolute;
-  left: -2px;
-  top: 0;
-  color: rgba(255,0,255,0.8);
-  opacity: 1;
-  animation: glitchShift2 0.3s infinite;
-}
-
-/* flicker */
-@keyframes btnFlicker {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.2); }
-  100% { filter: brightness(1); }
-}
-
-/* movement layers */
-@keyframes glitchShift1 {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(-2px,1px); }
-  100% { transform: translate(-1px,-1px); }
-}
-
-@keyframes glitchShift2 {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(2px,-1px); }
-  100% { transform: translate(1px,1px); }
-}
-
-/* SOCIAL LINKS */
 .links {
   margin-top: 24px;
   font-size: 14px;
@@ -274,90 +146,58 @@ h1 {
   color: #00ffc8;
 }
 
-/* BACKGROUND MOTION */
+
 @keyframes zoom {
   from { background-size: 105%; }
   to { background-size: 112%; }
 }
 
-/* MOBILE */
+
 @media (max-width: 600px) {
-  h1 { font-size: 34px; }
 
-  .player { max-width: 100%; }
+  /* make background less dominant */
+  body {
+    justify-content: flex-start;
+    padding-top: 80px;
 
-  .btn, .secondary-btn {
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 17px;
+    filter: saturate(0.9) contrast(1.05);
   }
 
-  .links { font-size: 15px; }
+  /* stronger dark wash = background pushed back */
+  body::before {
+    background:
+      radial-gradient(circle at top, rgba(0,255,255,0.08), transparent 55%),
+      radial-gradient(circle at bottom, rgba(255,0,255,0.05), transparent 60%),
+      rgba(0,0,0,0.78);
+  }
+
+  body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: inherit;
+    filter: blur(10px);
+    transform: scale(1.1);
+    opacity: 0.6;
+
+    z-index: 0;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .player {
+    max-width: 100%;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+
+  .links {
+    font-size: 15px;
+  }
 }
-
-</style>
-</head>
-
-<body>
-
-<h1>WOBU</h1>
-
-<!-- GLITCH TAGLINE -->
-<p class="tagline glitch" data-text="STHLM / SEOUL">
-  STHLM<br>/ SEOUL
-</p>
-
-<div class="player">
-  <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/album/5pEj2DFejq24WG0rIiUcsb?utm_source=generator&theme=0&si=5f29fa94232a4fce"
-    width="100%"
-    height="152"
-    frameborder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
-</div>
-
-<div class="cta-container">
-
-  <a
-    id="main-listen-btn"
-    class="btn glitch-btn"
-    href="https://open.spotify.com/artist/5Qr2dE8rgTgOye0aCIFNRu?si=7Np4gEIATHebkE2FbnKUXw"
-    target="_blank"
-  >
-    ▶ Listen Now
-  </a>
-
-</div>
-
-<div class="links">
-  <a href="https://instagram.com/wobucity" target="_blank">Instagram</a>
-  <a href="https://tiktok.com/@wobucity" target="_blank">TikTok</a>
-  <a href="mailto:wobu.mgmt@gmail.com">Contact</a>
-</div>
-
-<script>
-
-const APPLE_MUSIC_URL =
-  "https://music.apple.com/se/album/amplifier-vol-1-ep/6778122637";
-
-fetch("https://ipapi.co/json/")
-  .then(res => res.json())
-  .then(data => {
-
-    if (data.country_code === "JP") {
-      const btn = document.getElementById("main-listen-btn");
-      btn.href = APPLE_MUSIC_URL;
-      btn.innerHTML = " Listen Now";
-    }
-
-  })
-  .catch(() => {});
-
-</script>
-
-</body>
-</html>
