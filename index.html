@@ -1,50 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WOBU</title>
+
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #111;
+      background: #0b0b0f;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
-      padding: 40px;
+      padding: 20px;
     }
 
-    img {
-      width: 250px;
-      border-radius: 10px;
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #aaa;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .player {
+      width: 100%;
+      max-width: 420px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1DB954;
+      color: black;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .links {
+      margin-top: 25px;
+      font-size: 14px;
     }
 
     .links a {
-      display: block;
-      margin: 10px;
-      color: white;
+      color: #777;
+      margin: 0 10px;
       text-decoration: none;
-      background: #222;
-      padding: 12px;
-      border-radius: 8px;
     }
 
     .links a:hover {
-      background: #333;
+      color: white;
     }
   </style>
 </head>
-<body>
 
-  <img src="bandphoto.jpg" alt="Band photo">
+<body>
 
   <h1>WOBU</h1>
 
-  <p>WOBU</p>
+  <p></p>
 
-  <div class="links">
-    <a href="https://spotify.com">Spotify</a>
-    <a href="https://instagram.com">Instagram</a>
-    <a href="https://youtube.com">YouTube</a>
-    <a href="mailto:wobu.mgmt@gmail.com">Booking</a>
+  <!-- SPOTIFY EMBED (replace link) -->
+  <div class="player">
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/album/5pEj2DFejq24WG0rIiUcsb?utm_source=generator&theme=0&si=5f29fa94232a4fce"
+      width="100%" height="152"
+      frameBorder="0"
+      allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
   </div>
 
-</body>
-</html>
+  <!-- MAIN ACTION -->
+  <a class="btn" href="https://open.spotify.com/artist/5Qr2dE8rgTgOye0aCIFNRu?si=7Np4gEIATHebkE2FbnKUXw" target="_blank">
+    ▶ Listen on Spotify
+  </a>
+
+  <div class="links">
+    <a href="https://instagram.com/YOURPAGE">Instagram</a>
+    <a href="https://tiktok.com/@YOURPAGE">TikTok</a>
+    <a href="mailto:wobu.mgmt@gmail.com">Booking</a>
+  </div>
