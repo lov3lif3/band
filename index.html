@@ -1,158 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WOBU</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    overflow: hidden;
+<title>WOBU</title>
 
-    /* BACKGROUND IMAGE */
-    background: url("amplifier.jpg") center/cover no-repeat;
-    position: relative;
+<style>
 
-    /* SLOW CINEMATIC ZOOM */
-    animation: zoom 25s infinite alternate ease-in-out;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding:
+    max(20px, env(safe-area-inset-top))
+    20px
+    max(20px, env(safe-area-inset-bottom))
+    20px;
+
+  overflow: hidden;
+
+  background: url("amplifier.jpg") center/cover no-repeat;
+  position: relative;
+
+  animation: zoom 25s infinite alternate ease-in-out;
+}
+
+/* DARK CYBER OVERLAY */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at top, rgba(0,255,255,0.10), transparent 40%),
+    radial-gradient(circle at bottom, rgba(255,0,255,0.08), transparent 45%),
+    rgba(0,0,0,0.60);
+
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+/* CONTENT ABOVE OVERLAY */
+h1,
+p,
+.player,
+.links,
+.cta-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* BAND NAME */
+h1 {
+  font-size: 48px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 10px rgba(0,255,255,0.5),
+    0 0 20px rgba(255,0,255,0.3);
+
+  margin-bottom: 10px;
+}
+
+/* OPTIONAL TAGLINE */
+.tagline {
+  color: #bbb;
+  margin-bottom: 24px;
+}
+
+/* PLAYER */
+.player {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 20px;
+
+  box-shadow:
+    0 0 25px rgba(0,255,255,0.15),
+    0 0 35px rgba(255,0,255,0.10);
+
+  border-radius: 12px;
+}
+
+/* CTA CONTAINER */
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* PRIMARY BUTTON */
+.btn {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #1DB954,
+    #00ffc8
+  );
+
+  color: black;
+  padding: 16px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+
+  box-shadow:
+    0 0 20px rgba(0,255,200,0.3);
+
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 30px rgba(0,255,200,0.5);
+}
+
+/* SECONDARY BUTTON */
+.secondary-btn {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  background: rgba(255,255,255,0.10);
+  color: white;
+
+  padding: 14px 22px;
+  border-radius: 30px;
+
+  font-weight: bold;
+  text-decoration: none;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(6px);
+
+  transition: 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* SOCIAL LINKS */
+.links {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.links a {
+  color: #888;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.links a:hover {
+  color: #00ffc8;
+  text-shadow:
+    0 0 10px rgba(0,255,200,0.5);
+}
+
+/* PLATFORM TEXT */
+.platforms {
+  margin-top: 10px;
+  color: #999;
+  font-size: 12px;
+}
+
+/* BACKGROUND MOTION */
+@keyframes zoom {
+  from {
+    background-size: 105%;
   }
 
-  /* DARK + CYBER OVERLAY */
-  body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-      radial-gradient(circle at top, rgba(0,255,255,0.15), transparent 40%),
-      radial-gradient(circle at bottom, rgba(255,0,255,0.12), transparent 45%),
-      rgba(0,0,0,0.65);
-
-    backdrop-filter: blur(2px);
-    z-index: 0;
+  to {
+    background-size: 112%;
   }
+}
 
-  /* CONTENT ABOVE OVERLAY */
-  h1, p, .player, .btn, .links {
-    position: relative;
-    z-index: 1;
-  }
+/* MOBILE */
+@media (max-width: 600px) {
 
-  /* WOBU (CYBER GLOW) */
   h1 {
-    font-size: 48px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    text-shadow:
-      0 0 10px rgba(0,255,255,0.6),
-      0 0 20px rgba(255,0,255,0.4);
+    font-size: 34px;
   }
 
-  /* TAGLINE */
-  p {
-    color: #bbb;
-    margin-bottom: 25px;
-  }
-
-  /* SPOTIFY PLAYER */
   .player {
+    max-width: 100%;
+  }
+
+  .btn,
+  .secondary-btn {
     width: 100%;
-    max-width: 420px;
-    margin-bottom: 20px;
-
-    box-shadow:
-      0 0 25px rgba(0,255,255,0.15),
-      0 0 35px rgba(255,0,255,0.1);
-    border-radius: 12px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 17px;
   }
 
-  /* MAIN BUTTON */
-  .btn {
-    display: inline-block;
-    background: linear-gradient(90deg, #1DB954, #00ffc8);
-    color: black;
-    padding: 14px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-top: 10px;
-
-    box-shadow: 0 0 20px rgba(0,255,200,0.3);
-    transition: 0.2s ease;
-  }
-
-  .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0,255,200,0.5);
-  }
-
-  /* SECONDARY LINKS */
   .links {
-    margin-top: 25px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
-  .links a {
-    color: #888;
-    margin: 0 10px;
-    text-decoration: none;
-    transition: 0.2s;
-  }
+}
 
-  .links a:hover {
-    color: #00ffc8;
-    text-shadow: 0 0 10px rgba(0,255,200,0.5);
-  }
-
-  /* ANIMATIONS */
-  @keyframes zoom {
-    from { background-size: 100%; }
-    to { background-size: 115%; }
-  }
-
-  /* MOBILE OPTIMIZATION */
-  @media (max-width: 600px) {
-    h1 { font-size: 34px; }
-    .player { max-width: 100%; }
-  }
 </style>
 </head>
 
 <body>
 
-  <h1>WOBU</h1>
+<h1>WOBU</h1>
 
-  <p></p>
+<!-- Optional tagline -->
+<!-- <p class="tagline">WOBU</p> -->
 
-  <!-- SPOTIFY EMBED (replace link) -->
-  <div class="player">
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/album/5pEj2DFejq24WG0rIiUcsb?utm_source=generator&theme=0&si=5f29fa94232a4fce"
-      width="100%" height="152"
-      frameBorder="0"
-      allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
-  </div>
+<div class="player">
+  <iframe
+    style="border-radius:12px"
+    src="https://open.spotify.com/embed/album/5pEj2DFejq24WG0rIiUcsb?utm_source=generator&theme=0&si=5f29fa94232a4fce"
+    width="100%"
+    height="152"
+    frameborder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+  </iframe>
+</div>
 
-  <!-- MAIN ACTION -->
-  <a class="btn" href="https://open.spotify.com/artist/5Qr2dE8rgTgOye0aCIFNRu?si=7Np4gEIATHebkE2FbnKUXw" target="_blank">
+<div class="cta-container">
+
+  <a
+    id="main-listen-btn"
+    class="btn"
+    href="https://open.spotify.com/artist/5Qr2dE8rgTgOye0aCIFNRu?si=7Np4gEIATHebkE2FbnKUXw"
+    target="_blank"
+  >
     ▶ Listen on Spotify
   </a>
 
-  <div class="links">
-    <a href="https://instagram.com/wobucity">Instagram</a>
-    <a href="https://tiktok.com/@wobucity">TikTok</a>
-    <a href="mailto:wobu.mgmt@gmail.com">Booking</a>
+  <a
+    class="secondary-btn"
+    href="https://open.spotify.com/artist/5Qr2dE8rgTgOye0aCIFNRu?si=7Np4gEIATHebkE2FbnKUXw"
+    target="_blank"
+  >
+    Open in Spotify
+  </a>
+
+  <div class="platforms">
+    Spotify • Apple Music • Instagram
   </div>
+
+</div>
+
+<div class="links">
+  <a href="https://instagram.com/wobucity" target="_blank">Instagram</a>
+  <a href="https://tiktok.com/@wobucity" target="_blank">TikTok</a>
+  <a href="mailto:wobu.mgmt@gmail.com">Booking</a>
+</div>
+
+<script>
+
+const APPLE_MUSIC_URL =
+  "https://music.apple.com/se/album/amplifier-vol-1-ep/6778122637";
+
+const SPOTIFY_URL =
+  "https://open.spotify.com/artist/5Qr2dE8rgTgOye0aCIFNRu?si=7Np4gEIATHebkE2FbnKUXw";
+
+fetch("https://ipapi.co/json/")
+  .then(response => response.json())
+  .then(data => {
+
+    if (data.country_code === "JP") {
+
+      const btn =
+        document.getElementById("main-listen-btn");
+
+      btn.href = APPLE_MUSIC_URL;
+      btn.innerHTML =
+        " Listen on Apple Music";
+
+    }
+
+  })
+  .catch(() => {
+    // fallback = Spotify
+  });
+
+</script>
+
+</body>
+</html>
