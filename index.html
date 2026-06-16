@@ -6,68 +6,127 @@
   <title>WOBU</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+    /* BACKGROUND IMAGE */
+    background: url("amplifier.jpg") center/cover no-repeat;
+    position: relative;
 
-    p {
-      color: #aaa;
-      margin-bottom: 25px;
-      font-size: 16px;
-    }
+    /* SLOW CINEMATIC ZOOM */
+    animation: zoom 25s infinite alternate ease-in-out;
+  }
 
-    .player {
-      width: 100%;
-      max-width: 420px;
-      margin-bottom: 20px;
-    }
+  /* DARK + CYBER OVERLAY */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-    .btn {
-      display: inline-block;
-      background: #1DB954;
-      color: black;
-      padding: 14px 22px;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-top: 10px;
-      transition: 0.2s;
-    }
+    background:
+      radial-gradient(circle at top, rgba(0,255,255,0.15), transparent 40%),
+      radial-gradient(circle at bottom, rgba(255,0,255,0.12), transparent 45%),
+      rgba(0,0,0,0.65);
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
+    backdrop-filter: blur(2px);
+    z-index: 0;
+  }
 
-    .links {
-      margin-top: 25px;
-      font-size: 14px;
-    }
+  /* CONTENT ABOVE OVERLAY */
+  h1, p, .player, .btn, .links {
+    position: relative;
+    z-index: 1;
+  }
 
-    .links a {
-      color: #777;
-      margin: 0 10px;
-      text-decoration: none;
-    }
+  /* WOBU (CYBER GLOW) */
+  h1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 
-    .links a:hover {
-      color: white;
-    }
-  </style>
+    text-shadow:
+      0 0 10px rgba(0,255,255,0.6),
+      0 0 20px rgba(255,0,255,0.4);
+  }
+
+  /* TAGLINE */
+  p {
+    color: #bbb;
+    margin-bottom: 25px;
+  }
+
+  /* SPOTIFY PLAYER */
+  .player {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+
+    box-shadow:
+      0 0 25px rgba(0,255,255,0.15),
+      0 0 35px rgba(255,0,255,0.1);
+    border-radius: 12px;
+  }
+
+  /* MAIN BUTTON */
+  .btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #1DB954, #00ffc8);
+    color: black;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 10px;
+
+    box-shadow: 0 0 20px rgba(0,255,200,0.3);
+    transition: 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0,255,200,0.5);
+  }
+
+  /* SECONDARY LINKS */
+  .links {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+
+  .links a {
+    color: #888;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  .links a:hover {
+    color: #00ffc8;
+    text-shadow: 0 0 10px rgba(0,255,200,0.5);
+  }
+
+  /* ANIMATIONS */
+  @keyframes zoom {
+    from { background-size: 100%; }
+    to { background-size: 115%; }
+  }
+
+  /* MOBILE OPTIMIZATION */
+  @media (max-width: 600px) {
+    h1 { font-size: 34px; }
+    .player { max-width: 100%; }
+  }
+</style>
 </head>
 
 <body>
